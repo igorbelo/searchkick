@@ -572,13 +572,13 @@ module Searchkick
               else
                 range_query =
                   case op
-                  when :gt
+                  when :gt, "gt"
                     {from: op_value, include_lower: false}
-                  when :gte
+                  when :gte, "gte"
                     {from: op_value, include_lower: true}
-                  when :lt
+                  when :lt, "lt"
                     {to: op_value, include_upper: false}
-                  when :lte
+                  when :lte, "lte"
                     {to: op_value, include_upper: true}
                   else
                     raise "Unknown where operator"
