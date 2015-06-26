@@ -136,12 +136,10 @@ module Searchkick
     end
 
     def hits
-      if hit["fields"]
-        @response["hits"]["hits"].map do |hit|
-          hit["fields"].each do |field, value|
-            hit["fields"][field] = value.first if value.size == 1
-          end
-        end
+      @response["hits"]["hits"].map do |hit|
+        hit["fields"].each do |field, value|
+          hit["fields"][field] = value.first if value.size == 1
+        end if hit["fields"]
       end
 
       @response["hits"]["hits"]
